@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Check, Star, Zap, Brain, Rocket, Crown } from 'lucide-react';
+import { Check, Star, Zap, Brain, Rocket, Crown, TrendingUp, Shield } from 'lucide-react';
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
