@@ -1,6 +1,5 @@
-
 import React from "react";
-import { Linkedin, Instagram, Twitter, Tiktok, Youtube, Facebook } from "lucide-react";
+import { Linkedin, Instagram, Twitter, Youtube, Facebook } from "lucide-react";
 
 const platforms = [
   {
@@ -20,12 +19,6 @@ const platforms = [
     icon: Twitter,
     description: "Go viral with advanced AI scheduling, trend prediction, and personality-driven threads.",
     color: "from-sky-600 to-black",
-  },
-  {
-    name: "TikTok",
-    icon: Tiktok,
-    description: "Leverage AI-driven video and audio content to dominate on TikTok.",
-    color: "from-black via-pink-600 to-cyan-400",
   },
   {
     name: "YouTube",
