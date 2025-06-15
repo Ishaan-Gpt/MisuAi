@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { LayoutDashboard, BarChart2, History as HistoryIcon, Rocket, UserCircle2, Settings as SettingsIcon, LogOut } from "lucide-react";
@@ -36,10 +37,10 @@ export function AppSidebar() {
       <SidebarContent className="flex-1 bg-slate-900">
         {/* Main Site Link at the top */}
         <div className="mb-3 px-4 pt-4">
-          <button onClick={() => navigate("/")} className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow hover:scale-105 transition">
+          <Link to="/" className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow hover:scale-105 transition">
             <span className="text-lg">&#8592;</span>
             Back to Main Site
-          </button>
+          </Link>
         </div>
         <SidebarGroup>
           <SidebarGroupLabel className="text-purple-300 text-sm pt-2 pb-1">Main</SidebarGroupLabel>
