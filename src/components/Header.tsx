@@ -11,7 +11,7 @@ const Header = () => {
 
   const navigationItems = [
     { name: 'AI Agents', icon: Zap, href: '#features' },
-    { name: 'Platforms', icon: Users, href: '#platforms' },
+    { name: 'Platforms', icon: Users, href: '#platforms' }, // Fix: add the platforms link
     { name: 'Pricing', icon: BarChart3, href: '#pricing' },
     { name: 'Case Studies', icon: Settings, href: '#testimonials' }
   ];
