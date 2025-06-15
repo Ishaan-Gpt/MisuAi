@@ -2,6 +2,16 @@
 import React from "react";
 import { ChartContainer } from "./ui/chart";
 import { ChartPie, TrendingUp, Timer, Workflow, BarChart, Activity } from "lucide-react";
+import {
+  LineChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Line,
+  ResponsiveContainer,
+} from "recharts";
 
 // Example agent run data (could be fetched via API in real product)
 const performanceData = [
@@ -138,40 +148,38 @@ const AgentPerformanceDashboard = () => {
           config={chartConfig}
           className="h-64 w-full"
         >
-          {(Recharts) => (
-            <Recharts.LineChart data={performanceData}>
-              <Recharts.CartesianGrid strokeDasharray="3 3" />
-              <Recharts.XAxis dataKey="date" stroke="#cbd5e1" />
-              <Recharts.YAxis stroke="#cbd5e1" />
-              <Recharts.Tooltip 
-                contentStyle={{ background: "#18181B", border: "1px solid #27272a", color: "#fff" }} 
-              />
-              <Recharts.Legend />
-              <Recharts.Line
-                type="monotone"
-                dataKey="posts"
-                stroke="#6366f1"
-                strokeWidth={2.5}
-                activeDot={{ r: 8 }}
-                dot={{ r: 4, fill: "#6366f1" }}
-              />
-              <Recharts.Line
-                type="monotone"
-                dataKey="engagements"
-                stroke="#10b981"
-                strokeWidth={2.5}
-                dot={{ r: 4, fill: "#10b981" }}
-              />
-              <Recharts.Line
-                type="monotone"
-                dataKey="accuracy"
-                stroke="#f59e42"
-                strokeDasharray="6 5"
-                strokeWidth={2.5}
-                dot={{ r: 4, fill: "#f59e42" }}
-              />
-            </Recharts.LineChart>
-          )}
+          <LineChart data={performanceData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" stroke="#cbd5e1" />
+            <YAxis stroke="#cbd5e1" />
+            <Tooltip 
+              contentStyle={{ background: "#18181B", border: "1px solid #27272a", color: "#fff" }} 
+            />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="posts"
+              stroke="#6366f1"
+              strokeWidth={2.5}
+              activeDot={{ r: 8 }}
+              dot={{ r: 4, fill: "#6366f1" }}
+            />
+            <Line
+              type="monotone"
+              dataKey="engagements"
+              stroke="#10b981"
+              strokeWidth={2.5}
+              dot={{ r: 4, fill: "#10b981" }}
+            />
+            <Line
+              type="monotone"
+              dataKey="accuracy"
+              stroke="#f59e42"
+              strokeDasharray="6 5"
+              strokeWidth={2.5}
+              dot={{ r: 4, fill: "#f59e42" }}
+            />
+          </LineChart>
         </ChartContainer>
       </div>
       {/* Work log & Process */}
