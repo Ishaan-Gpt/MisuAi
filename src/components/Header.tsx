@@ -12,7 +12,6 @@ const Header = () => {
   const navigationItems = [
     { name: 'AI Agents', icon: Zap, href: '#features' },
     { name: 'Platforms', icon: Users, href: '#platforms' },
-    { name: 'Deployed Agents', icon: BarChart3, href: '/deployed-agents' },
     { name: 'Pricing', icon: BarChart3, href: '#pricing' },
     { name: 'Case Studies', icon: Settings, href: '#testimonials' }
   ];
