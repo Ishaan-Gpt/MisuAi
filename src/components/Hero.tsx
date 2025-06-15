@@ -1,152 +1,184 @@
-import React, { useState } from 'react';
-import { Play, ArrowRight, CheckCircle, Zap, Brain, Sparkles } from 'lucide-react';
+
+import React, { useState, useEffect } from 'react';
+import { Play, ArrowRight, CheckCircle, Zap, Brain, Sparkles, TrendingUp, Users, Target } from 'lucide-react';
 import AgentDeployModal from './AgentDeployModal';
 import { toast } from "@/components/ui/use-toast";
 
 const Hero = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [currentStat, setCurrentStat] = useState(0);
+
+  const stats = [
+    { value: '2.8M+', label: 'AI Posts Generated' },
+    { value: '890%', label: 'Avg Engagement Boost' },
+    { value: '50K+', label: 'Active AI Agents' },
+    { value: '99.7%', label: 'Trend Accuracy' }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStat((prev) => (prev + 1) % stats.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-20 pb-16 overflow-hidden">
-      {/* Advanced background effects */}
+    <section className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 relative overflow-hidden pt-16">
+      {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 sp-animate-bounce"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 sp-animate-bounce" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 sp-animate-bounce" style={{animationDelay: '2s'}}></div>
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
 
-      <div className="relative sp-container">
-        <div className="text-center max-w-5xl mx-auto">
-          {/* Revolutionary badge */}
-          <div className="inline-flex items-center sp-badge mb-8 sp-animate-fade-in bg-gradient-to-r from-purple-600/20 to-cyan-600/20 border border-purple-500/30">
-            <Brain className="w-4 h-4 mr-2 text-purple-400" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
-              Revolutionary Agentic AI • Now Live
-            </span>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+        <div className="text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-sm mb-8">
+            <Brain className="w-4 h-4 mr-2 text-blue-400" />
+            <span className="text-blue-300 text-sm font-medium">AI Agents • Production Ready</span>
           </div>
 
-          {/* Powerful headline */}
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 sp-animate-fade-in-up leading-tight">
+          {/* Main Headline */}
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
             Deploy{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">
-              Autonomous AI Agents
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 animate-pulse">
+              AI Agents
             </span>
             <br />
-            That Dominate Social Media
+            That Scale Your Influence
           </h1>
 
-          {/* Compelling subtitle */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto sp-animate-fade-in-up leading-relaxed" style={{animationDelay: '0.2s'}}>
-            MisuAi deploys intelligent agents that think, create, and optimize your entire social media presence autonomously. 
-            <span className="text-purple-400 font-semibold"> Watch your engagement explode across LinkedIn, Instagram, TikTok, and Twitter.</span>
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+            Autonomous AI agents that create viral content, predict trends, and optimize engagement 
+            <span className="text-blue-400 font-semibold"> across all social platforms 24/7</span>
           </p>
 
-          {/* Power stats */}
-          <div className="flex flex-wrap justify-center gap-6 mb-8 sp-animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-            <div className="flex items-center text-gray-300">
-              <Zap className="w-5 h-5 text-yellow-400 mr-2" />
-              <span>10x Faster Content Creation</span>
-            </div>
-            <div className="flex items-center text-gray-300">
-              <Sparkles className="w-5 h-5 text-purple-400 mr-2" />
-              <span>Viral Trend Prediction</span>
-            </div>
-            <div className="flex items-center text-gray-300">
-              <Brain className="w-5 h-5 text-cyan-400 mr-2" />
-              <span>Autonomous Optimization</span>
-            </div>
-          </div>
-
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sp-animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-            <button
-              className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] flex items-center"
-              onClick={() => setModalOpen(true)}
-            >
-              <span className="relative z-10">Deploy Your AI Agent</span>
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </button>
-            <button
-              className="group flex items-center text-lg px-8 py-4 border border-gray-600 text-gray-300 rounded-xl hover:border-purple-500 hover:text-white transition-all"
-              onClick={() => toast({title: "Demo video coming soon!", description: "The AI in action preview will be available soon."})}
-            >
-              <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-              Watch AI in Action
-            </button>
-          </div>
-          <AgentDeployModal open={modalOpen} onOpenChange={setModalOpen} />
-          {/* Trust indicators */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-400 mb-16 sp-animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-            <div className="flex items-center">
-              <CheckCircle className="h-4 w-4 text-green-400 mr-2" />
-              Enterprise-grade security
-            </div>
-            <div className="flex items-center">
-              <CheckCircle className="h-4 w-4 text-green-400 mr-2" />
-              No human intervention needed
-            </div>
-            <div className="flex items-center">
-              <CheckCircle className="h-4 w-4 text-green-400 mr-2" />
-              ROI guaranteed or money back
-            </div>
-          </div>
-
-          {/* Revolutionary stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16 sp-animate-fade-in-up" style={{animationDelay: '0.8s'}}>
-            <div className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">2.8M+</div>
-              <div className="text-gray-300">Posts Generated Daily</div>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 mb-2">890%</div>
-              <div className="text-gray-300">Average Engagement Boost</div>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400 mb-2">24/7</div>
-              <div className="text-gray-300">Autonomous Operation</div>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 mb-2">99.7%</div>
-              <div className="text-gray-300">Trend Prediction Accuracy</div>
-            </div>
-          </div>
-
-          {/* AI Dashboard Preview */}
-          <div className="relative max-w-6xl mx-auto sp-animate-scale-in" style={{animationDelay: '1s'}}>
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
-              <div className="bg-gray-900/50 h-12 flex items-center px-6 border-b border-white/10">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                </div>
-                <div className="ml-6 text-sm text-gray-300">MisuAi Command Center</div>
+          {/* Animated Stats */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mb-12 max-w-md mx-auto">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-2">
+                {stats[currentStat].value}
               </div>
+              <div className="text-gray-300 text-sm">{stats[currentStat].label}</div>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+            <button
+              onClick={() => setModalOpen(true)}
+              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center"
+            >
+              <Zap className="mr-2 h-5 w-5" />
+              Deploy AI Agent Now
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => toast({title: "Demo Available Soon", description: "Live agent demo coming in next update!"})}
+              className="group flex items-center px-8 py-4 border border-gray-600 text-gray-300 rounded-xl text-lg hover:border-blue-500 hover:text-white transition-all hover:bg-white/5"
+            >
+              <Play className="mr-2 h-5 w-5" />
+              Watch Live Demo
+            </button>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400 mb-16">
+            <div className="flex items-center">
+              <CheckCircle className="h-4 w-4 text-green-400 mr-2" />
+              No setup required
+            </div>
+            <div className="flex items-center">
+              <CheckCircle className="h-4 w-4 text-green-400 mr-2" />
+              Deploy in 60 seconds
+            </div>
+            <div className="flex items-center">
+              <CheckCircle className="h-4 w-4 text-green-400 mr-2" />
+              14-day free trial
+            </div>
+          </div>
+
+          {/* Live Dashboard Preview */}
+          <div className="relative max-w-6xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+              {/* Dashboard Header */}
+              <div className="bg-gray-900/80 h-14 flex items-center justify-between px-6 border-b border-white/10">
+                <div className="flex items-center space-x-3">
+                  <div className="flex space-x-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                  </div>
+                  <span className="text-gray-300 font-medium">MisuAi Command Center</span>
+                </div>
+                <div className="flex items-center text-green-400 text-sm">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                  5 Agents Active
+                </div>
+              </div>
+
+              {/* Dashboard Content */}
               <div className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="space-y-4">
-                    <div className="h-4 bg-gradient-to-r from-purple-500/30 to-transparent rounded animate-pulse"></div>
-                    <div className="h-4 bg-gradient-to-r from-cyan-500/30 to-transparent rounded w-3/4 animate-pulse"></div>
-                    <div className="h-40 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-xl flex items-center justify-center border border-purple-500/30">
-                      <span className="text-purple-300 font-semibold">AI Content Generator</span>
+                  {/* Content Generator */}
+                  <div className="bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-xl p-6 border border-blue-500/30">
+                    <div className="flex items-center mb-4">
+                      <Brain className="w-6 h-6 text-blue-400 mr-2" />
+                      <h3 className="text-blue-300 font-semibold">AI Content Engine</h3>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="h-2 bg-blue-500/30 rounded animate-pulse"></div>
+                      <div className="h-2 bg-blue-500/30 rounded w-3/4 animate-pulse"></div>
+                      <div className="text-xs text-blue-200">Generating LinkedIn post...</div>
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="h-4 bg-gradient-to-r from-cyan-500/30 to-transparent rounded animate-pulse"></div>
-                    <div className="h-4 bg-gradient-to-r from-blue-500/30 to-transparent rounded w-2/3 animate-pulse"></div>
-                    <div className="h-40 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 rounded-xl flex items-center justify-center border border-cyan-500/30">
-                      <span className="text-cyan-300 font-semibold">Viral Trend Detector</span>
+
+                  {/* Trend Detector */}
+                  <div className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-xl p-6 border border-purple-500/30">
+                    <div className="flex items-center mb-4">
+                      <TrendingUp className="w-6 h-6 text-purple-400 mr-2" />
+                      <h3 className="text-purple-300 font-semibold">Viral Trend Detector</h3>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="h-2 bg-purple-500/30 rounded animate-pulse"></div>
+                      <div className="h-2 bg-purple-500/30 rounded w-2/3 animate-pulse"></div>
+                      <div className="text-xs text-purple-200">Analyzing trends...</div>
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="h-4 bg-gradient-to-r from-green-500/30 to-transparent rounded animate-pulse"></div>
-                    <div className="h-4 bg-gradient-to-r from-emerald-500/30 to-transparent rounded w-4/5 animate-pulse"></div>
-                    <div className="h-40 bg-gradient-to-br from-green-600/20 to-emerald-600/20 rounded-xl flex items-center justify-center border border-green-500/30">
-                      <span className="text-green-300 font-semibold">Engagement Optimizer</span>
+
+                  {/* Engagement Optimizer */}
+                  <div className="bg-gradient-to-br from-green-600/20 to-emerald-600/20 rounded-xl p-6 border border-green-500/30">
+                    <div className="flex items-center mb-4">
+                      <Target className="w-6 h-6 text-green-400 mr-2" />
+                      <h3 className="text-green-300 font-semibold">Engagement Optimizer</h3>
                     </div>
+                    <div className="space-y-3">
+                      <div className="h-2 bg-green-500/30 rounded animate-pulse"></div>
+                      <div className="h-2 bg-green-500/30 rounded w-4/5 animate-pulse"></div>
+                      <div className="text-xs text-green-200">Optimizing timing...</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Live Metrics */}
+                <div className="mt-6 grid grid-cols-4 gap-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-400">156K</div>
+                    <div className="text-xs text-gray-400">Impressions Today</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-purple-400">89%</div>
+                    <div className="text-xs text-gray-400">Engagement Rate</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-green-400">2.3K</div>
+                    <div className="text-xs text-gray-400">New Followers</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-cyan-400">47</div>
+                    <div className="text-xs text-gray-400">Posts Generated</div>
                   </div>
                 </div>
               </div>
@@ -154,6 +186,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <AgentDeployModal open={modalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 };
