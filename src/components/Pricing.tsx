@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { Check, Star, Zap, Brain, Rocket, Crown, TrendingUp, Shield } from 'lucide-react';
+import AgentDeployModal from './AgentDeployModal';
+import ContactEnterpriseModal from './ContactEnterpriseModal';
+import { useState as useReactState } from 'react';
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
+  const [deployModalOpen, setDeployModalOpen] = useReactState(false);
+  const [contactModalOpen, setContactModalOpen] = useReactState(false);
 
   const plans = [
     {
@@ -179,6 +184,7 @@ const Pricing = () => {
                       ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:scale-105 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)]'
                       : 'bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:border-purple-500/50 hover:bg-white/20'
                   }`}
+                  onClick={() => setDeployModalOpen(true)}
                 >
                   {plan.buttonText}
                 </button>
@@ -186,6 +192,8 @@ const Pricing = () => {
             );
           })}
         </div>
+
+        <AgentDeployModal open={deployModalOpen} onOpenChange={setDeployModalOpen} />
 
         {/* Enterprise note */}
         <div className="text-center mt-16">
@@ -197,9 +205,13 @@ const Pricing = () => {
               For enterprises with unique requirements, we offer custom AI agent development, 
               private cloud deployment, and dedicated infrastructure.
             </p>
-            <button className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-3 rounded-xl font-semibold hover:scale-105 transition-transform">
+            <button
+              className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-3 rounded-xl font-semibold hover:scale-105 transition-transform"
+              onClick={() => setContactModalOpen(true)}
+            >
               Contact Enterprise Team
             </button>
+            <ContactEnterpriseModal open={contactModalOpen} onOpenChange={setContactModalOpen} />
           </div>
         </div>
 

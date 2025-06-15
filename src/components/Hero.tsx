@@ -1,8 +1,10 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Play, ArrowRight, CheckCircle, Zap, Brain, Sparkles } from 'lucide-react';
+import AgentDeployModal from './AgentDeployModal';
+import { toast } from "@/components/ui/use-toast";
 
 const Hero = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <section className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-20 pb-16 overflow-hidden">
       {/* Advanced background effects */}
@@ -59,17 +61,23 @@ const Hero = () => {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sp-animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-            <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] flex items-center">
+            <button
+              className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] flex items-center"
+              onClick={() => setModalOpen(true)}
+            >
               <span className="relative z-10">Deploy Your AI Agent</span>
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </button>
-            <button className="group flex items-center text-lg px-8 py-4 border border-gray-600 text-gray-300 rounded-xl hover:border-purple-500 hover:text-white transition-all">
+            <button
+              className="group flex items-center text-lg px-8 py-4 border border-gray-600 text-gray-300 rounded-xl hover:border-purple-500 hover:text-white transition-all"
+              onClick={() => toast({title: "Demo video coming soon!", description: "The AI in action preview will be available soon."})}
+            >
               <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
               Watch AI in Action
             </button>
           </div>
-
+          <AgentDeployModal open={modalOpen} onOpenChange={setModalOpen} />
           {/* Trust indicators */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-400 mb-16 sp-animate-fade-in-up" style={{animationDelay: '0.6s'}}>
             <div className="flex items-center">

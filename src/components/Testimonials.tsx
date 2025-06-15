@@ -1,8 +1,10 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Star, Quote, TrendingUp, Users, Zap, Brain } from 'lucide-react';
+import AgentDeployModal from './AgentDeployModal';
+import { toast } from "@/components/ui/use-toast";
 
 const Testimonials = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   const testimonials = [
     {
       name: 'Alex Chen',
@@ -207,10 +209,14 @@ const Testimonials = () => {
               Deploy your autonomous AI agents today and watch your social media presence explode. 
               The future of content creation is here, and it's autonomous.
             </p>
-            <button className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-12 py-4 rounded-xl text-lg font-semibold hover:scale-105 transition-all duration-300 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)]">
+            <button
+              className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-12 py-4 rounded-xl text-lg font-semibold hover:scale-105 transition-all duration-300 hover:shadow-[0_0_30px_rgba(168,85,247,0.4)]"
+              onClick={() => setModalOpen(true)}
+            >
               Deploy Your AI Army - Start Free Trial
               <Zap className="inline-block w-5 h-5 ml-2 group-hover:animate-pulse" />
             </button>
+            <AgentDeployModal open={modalOpen} onOpenChange={setModalOpen} />
             <div className="flex justify-center items-center gap-6 mt-6 text-sm text-gray-400">
               <span>✓ No credit card required</span>
               <span>✓ 14-day free trial</span>

@@ -1,9 +1,12 @@
-
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Brain, Zap, Users, Shield } from 'lucide-react';
+import { Menu, X, ChevronDown, Brain, Zap, Users } from 'lucide-react';
+import SignInModal from './SignInModal';
+import AgentDeployModal from './AgentDeployModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [signInOpen, setSignInOpen] = useState(false);
+  const [deployOpen, setDeployOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
@@ -58,14 +61,22 @@ const Header = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="text-gray-300 hover:text-white px-4 py-2 text-sm font-medium transition-colors">
+            <button
+              className="text-gray-300 hover:text-white px-4 py-2 text-sm font-medium transition-colors"
+              onClick={() => setSignInOpen(true)}
+            >
               Sign In
             </button>
-            <button className="group relative bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+            <button
+              className="group relative bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+              onClick={() => setDeployOpen(true)}
+            >
               <span className="relative z-10">Deploy AI Agent</span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </button>
           </div>
+          <SignInModal open={signInOpen} onOpenChange={setSignInOpen} />
+          <AgentDeployModal open={deployOpen} onOpenChange={setDeployOpen} />
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
@@ -82,7 +93,8 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-sm border-t border-white/10">
-              <a href="#" className="flex items-center px-3 py-2 text-base font-medium text-gray-300 hover:text-white transition-colors">
+              <a href="#" className="flex items-center px-3 py-2 text-base font-medium text-gray-300 hover:text-white transition-colors"
+                onClick={() => setDeployOpen(true)}>
                 <Zap className="w-4 h-4 mr-2" />
                 AI Agents
               </a>
@@ -101,10 +113,16 @@ const Header = () => {
               </a>
               <div className="pt-4 pb-3 border-t border-white/10">
                 <div className="flex flex-col space-y-2">
-                  <button className="text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-white transition-colors">
+                  <button
+                    className="text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-white transition-colors"
+                    onClick={() => setSignInOpen(true)}
+                  >
                     Sign In
                   </button>
-                  <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm mx-3 py-3 rounded-lg font-medium hover:scale-105 transition-transform">
+                  <button
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm mx-3 py-3 rounded-lg font-medium hover:scale-105 transition-transform"
+                    onClick={() => setDeployOpen(true)}
+                  >
                     Deploy AI Agent
                   </button>
                 </div>
