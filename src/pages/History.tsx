@@ -1,8 +1,7 @@
-
 import React from "react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { BackButton } from "@/components/ui/BackButton";
-import { Clock } from "lucide-react";
+import { Clock, BarChart2, Rocket, UserCircle2, Award } from "lucide-react";
 
 // Dummy history data
 const historyData = [
@@ -12,13 +11,28 @@ const historyData = [
   { time: "3 days ago", event: "Settings changed", status: "Info", iconColor: "text-blue-400" },
 ];
 
+const stats = [
+  { label: "Total Events", value: 131, icon: <BarChart2 className="text-purple-400"/> },
+  { label: "Agent Deployments", value: 13, icon: <Rocket className="text-cyan-400"/> },
+  { label: "Profile Changes", value: 29, icon: <UserCircle2 className="text-blue-400"/> },
+  { label: "Achievements", value: 7, icon: <Award className="text-lime-400"/> }
+];
+
 const History = () => (
   <DashboardLayout
     title="History"
-    subtitle="Review a chronological log of your actions, deployments, and updates."
+    subtitle={<span className="font-medium text-purple-300">Chronological log of all your actions, deployments, and achievements.</span>}
   >
-    <BackButton />
-    <div className="bg-white/5 rounded-2xl p-8 border border-white/10 text-gray-200 min-h-[300px] shadow animate-fade-in">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mb-8">
+      {stats.map((s, i) => (
+        <div key={i} className="bg-gradient-to-tr from-purple-900 to-slate-950 border border-purple-600/30 rounded-2xl px-5 py-8 flex flex-col items-center shadow-lg">
+          {s.icon}
+          <div className="text-3xl font-extrabold mt-2 mb-1 text-white">{s.value}</div>
+          <div className="text-purple-200 text-base">{s.label}</div>
+        </div>
+      ))}
+    </div>
+    <div className="bg-white/5 rounded-2xl p-8 border border-white/10 text-gray-200 min-h-[300px] shadow-lg animate-fade-in">
       <ul className="divide-y divide-purple-900/40">
         {historyData.map((h, idx) => (
           <li key={idx} className="flex items-center gap-4 py-4 px-2 hover:bg-slate-900/50 rounded transition">
@@ -34,5 +48,4 @@ const History = () => (
     </div>
   </DashboardLayout>
 );
-
 export default History;

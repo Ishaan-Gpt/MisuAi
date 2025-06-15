@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Sidebar,
@@ -63,8 +62,18 @@ export function AppSidebar() {
   const navigate = useNavigate();
 
   return (
-    <Sidebar className="min-h-screen border-r border-white/10 bg-gradient-to-b from-slate-950 to-gray-900 w-64">
-      <SidebarContent>
+    <Sidebar className="min-h-screen border-r border-white/10 bg-gradient-to-b from-slate-950 to-gray-900 w-64 flex flex-col">
+      <SidebarContent className="flex-1">
+        {/* Main Site Link at the top */}
+        <div className="mb-3 px-4 pt-4">
+          <button
+            onClick={() => navigate("/")}
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow hover:scale-105 transition"
+          >
+            <span className="text-lg">&#8592;</span>
+            Back to Main Site
+          </button>
+        </div>
         <SidebarGroup>
           <SidebarGroupLabel className="text-purple-300 text-sm pt-2 pb-1">Main</SidebarGroupLabel>
           <SidebarGroupContent>
