@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Users, TrendingUp, Brain, Target, Instagram, Linkedin, Twitter, Youtube, Facebook, Loader2, Rocket } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -53,10 +52,19 @@ const getProgressStage = (createdAt: number) => {
   return { stage: onboardingStages.length - 1, progress: 1 };
 };
 
-const DeployedAgents: React.FC = () => {
-  const [agents, setAgents] = useState<any[]>([]);
+interface DeployedAgentsProps {
+  source?: "home" | "page";
+}
 
-  useEffect(() => {
+/**
+ * DeployedAgents: Renders deployed agents.
+ * - If `source` is "home", renders section.
+ * - If `source` is "page", renders for inside a page.
+ */
+const DeployedAgents: React.FC<DeployedAgentsProps> = ({ source = "home" }) => {
+  const [agents, setAgents] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
     const agentsRaw = localStorage.getItem("deployedAgents");
     if (agentsRaw) setAgents(JSON.parse(agentsRaw));
     // Listen for deployments from other tabs/windows
@@ -68,7 +76,7 @@ const DeployedAgents: React.FC = () => {
     return () => window.removeEventListener("storage", handler);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Poll every 2s to update progress
     const interval = setInterval(() => {
       setAgents((prev) => [...prev]);
@@ -76,23 +84,35 @@ const DeployedAgents: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  if (!agents.length) return null;
+  if (!agents.length) {
+    return (
+      <div className="text-gray-400 text-center py-8">
+        No deployed agents found.
+      </div>
+    );
+  }
 
   return (
-    <section className="py-12 bg-gradient-to-b from-slate-950 to-gray-900 border-t border-white/10" aria-labelledby="deployed-heading">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <Card className="bg-white/5 border border-white/10 rounded-3xl shadow-lg animate-fade-in">
-          <CardHeader className="flex flex-col gap-1">
-            <CardTitle id="deployed-heading" className="text-2xl font-bold text-white flex items-center gap-2">
-              <Rocket className="w-6 h-6 text-purple-400" />
+    <div className={source === "home"
+      ? "py-12 bg-gradient-to-b from-slate-950 to-gray-900 border-t border-white/10"
+      : ""}
+      aria-labelledby="deployed-heading"
+    >
+      <div className={source === "page" ? "" : "max-w-3xl mx-auto px-4 sm:px-6"}>
+        <div className="bg-white/5 border border-white/10 rounded-3xl shadow-lg animate-fade-in">
+          <div className="flex flex-col gap-1 px-7 pt-7">
+            <div id="deployed-heading" className="text-2xl font-bold text-white flex items-center gap-2 pb-1">
+              <span className="w-7 h-7 rounded-full bg-purple-400/20 flex items-center justify-center">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" className="w-5 h-5 text-purple-400"><path d="M2 20h.01M7 20v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M17 20h.01M12 15v-2.5m0 0c-1.1 0-2-.9-2-2V7a2 2 0 0 1 2-2c1.1 0 2 .9 2 2v3.5c0 1.1-.9 2-2 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </span>
               Deployed Agents
-            </CardTitle>
+            </div>
             <p className="text-gray-300 text-sm">
-              Your recently deployed agents are getting settled in. Check their progress!
+              Your recently deployed agents and their statuses.
             </p>
-          </CardHeader>
-          <CardContent className="pt-1 flex flex-col gap-5">
-            {agents.slice(0).reverse().map((agent, idx) => {
+          </div>
+          <div className="pt-1 flex flex-col gap-5 px-7 pb-7">
+            {agents.slice(0).reverse().map((agent) => {
               const PersonaIcon = personaIcons[agent.persona] || Users;
               const createdAt = agent.createdAt || Date.now();
               const { stage, progress } = getProgressStage(createdAt);
@@ -129,10 +149,10 @@ const DeployedAgents: React.FC = () => {
                 </div>
               );
             })}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

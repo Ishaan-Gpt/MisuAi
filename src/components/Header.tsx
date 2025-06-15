@@ -1,20 +1,26 @@
 
 import React, { useState } from 'react';
-import { Menu, X, Brain, Zap, Users, Settings, BarChart3 } from 'lucide-react';
+import { Menu, X, Brain, Zap, Users, Settings, BarChart3, User } from 'lucide-react';
 import SignInModal from './SignInModal';
 import AgentDeployModal from './AgentDeployModal';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
   const [deployOpen, setDeployOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navigationItems = [
     { name: 'AI Agents', icon: Zap, href: '#features' },
-    { name: 'Platforms', icon: Users, href: '#platforms' }, // Fix: add the platforms link
+    { name: 'Platforms', icon: Users, href: '#platforms' },
     { name: 'Pricing', icon: BarChart3, href: '#pricing' },
     { name: 'Case Studies', icon: Settings, href: '#testimonials' }
   ];
+
+  // Placeholder for user info/avatar
+  const userInitial = "U";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-white/10">
@@ -51,7 +57,7 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Desktop CTA Buttons */}
+          {/* Desktop CTA Buttons + Profile */}
           <div className="hidden lg:flex items-center space-x-3">
             <button
               className="text-gray-300 hover:text-white px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/5"
@@ -65,6 +71,30 @@ const Header = () => {
             >
               <span className="relative z-10">Deploy Agent</span>
             </button>
+            {/* Profile Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="ml-2 w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center text-white font-bold text-xl focus:outline-none border border-purple-400 hover:ring-2 ring-purple-400 transition">
+                  {/* Show initial or placeholder icon */}
+                  <User className="w-6 h-6" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="z-50 min-w-[180px] mt-2">
+                <DropdownMenuItem onClick={() => navigate("/profile")}>
+                  <User className="w-4 h-4 mr-2" /> Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate("/settings")}>
+                  <Settings className="w-4 h-4 mr-2" /> Settings
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate("/deployed-agents")}>
+                  <Zap className="w-4 h-4 mr-2" /> Deployed Agents
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => alert("Signed out!")}>
+                  Sign Out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Mobile menu button */}
@@ -111,6 +141,46 @@ const Header = () => {
                   }}
                 >
                   Deploy Agent
+                </button>
+                {/* Profile option for mobile */}
+                <button
+                  className="w-full flex items-center text-left px-3 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate("/profile");
+                  }}
+                >
+                  <User className="w-5 h-5 mr-3" />
+                  Profile
+                </button>
+                <button
+                  className="w-full flex items-center text-left px-3 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate("/settings");
+                  }}
+                >
+                  <Settings className="w-5 h-5 mr-3" />
+                  Settings
+                </button>
+                <button
+                  className="w-full flex items-center text-left px-3 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate("/deployed-agents");
+                  }}
+                >
+                  <Zap className="w-5 h-5 mr-3" />
+                  Deployed Agents
+                </button>
+                <button
+                  className="w-full text-left px-3 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    alert("Signed out!");
+                  }}
+                >
+                  Sign Out
                 </button>
               </div>
             </div>

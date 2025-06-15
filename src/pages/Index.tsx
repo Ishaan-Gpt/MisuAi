@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -6,7 +5,6 @@ import Features from '@/components/Features';
 import Platforms from '@/components/Platforms';
 import Pricing from '@/components/Pricing';
 import Testimonials from '@/components/Testimonials';
-import DeployedAgents from '@/components/DeployedAgents';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -18,7 +16,6 @@ const Index = () => {
       <Platforms />
       <Pricing />
       <Testimonials />
-      <DeployedAgents />
       <Footer />
     </div>
   );
