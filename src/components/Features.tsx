@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Bot, Brain, Zap, Target, TrendingUp, Users, Shield, Sparkles, Eye, Network, Cpu, Rocket, ArrowRight } from 'lucide-react';
 
@@ -55,6 +54,8 @@ const Features = () => {
       demo: 'Average 890% engagement increase'
     }
   ];
+
+  const ActiveIcon = features[activeFeature].icon;
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-900 to-slate-900" id="features">
@@ -137,7 +138,7 @@ const Features = () => {
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 shadow-2xl">
               <div className="text-center mb-6">
                 <div className={`inline-flex w-16 h-16 rounded-2xl bg-gradient-to-br ${features[activeFeature].color} items-center justify-center mb-4`}>
-                  <features[activeFeature].icon className="w-8 h-8 text-white" />
+                  <ActiveIcon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
                   {features[activeFeature].title}
