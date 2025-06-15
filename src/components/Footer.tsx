@@ -1,92 +1,164 @@
 
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Youtube } from 'lucide-react';
 
 const Footer = () => {
+  const footerLinks = {
+    product: [
+      { name: 'Features', href: '#' },
+      { name: 'Pricing', href: '#pricing' },
+      { name: 'API', href: '#' },
+      { name: 'Integrations', href: '#' },
+      { name: 'Chrome Extension', href: '#' }
+    ],
+    solutions: [
+      { name: 'Sales Teams', href: '#' },
+      { name: 'Agencies', href: '#' },
+      { name: 'Startups', href: '#' },
+      { name: 'Enterprise', href: '#' },
+      { name: 'Recruiting', href: '#' }
+    ],
+    resources: [
+      { name: 'Blog', href: '#' },
+      { name: 'Help Center', href: '#' },
+      { name: 'Templates', href: '#' },
+      { name: 'Case Studies', href: '#' },
+      { name: 'Webinars', href: '#' }
+    ],
+    company: [
+      { name: 'About Us', href: '#' },
+      { name: 'Careers', href: '#' },
+      { name: 'Press', href: '#' },
+      { name: 'Partners', href: '#' },
+      { name: 'Contact', href: '#' }
+    ]
+  };
+
   return (
-    <footer className="bg-gray-900 text-white">
-      {/* Main Footer */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="col-span-1 lg:col-span-2">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-              MisuAi
-            </h3>
+    <footer className="sp-footer">
+      {/* Main footer */}
+      <div className="sp-container py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          {/* Company info */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center mb-6">
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-lg">M</span>
+              </div>
+              <span className="text-xl font-bold text-white">MisuAi</span>
+            </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Transform your email marketing with advanced AI technology. Boost engagement, increase conversions, and grow your business with MisuAi.
+              The smartest way to send cold emails. Our AI helps you write personalized emails 
+              that get replies and close deals.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                <Facebook className="w-6 h-6" />
+            
+            {/* Social links */}
+            <div className="flex space-x-4 mb-8">
+              <a href="#" className="sp-footer-link hover:text-blue-400">
+                <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                <Twitter className="w-6 h-6" />
+              <a href="#" className="sp-footer-link hover:text-blue-400">
+                <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                <Instagram className="w-6 h-6" />
+              <a href="#" className="sp-footer-link hover:text-blue-400">
+                <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                <Linkedin className="w-6 h-6" />
+              <a href="#" className="sp-footer-link hover:text-blue-400">
+                <Youtube className="w-5 h-5" />
               </a>
+            </div>
+
+            {/* Contact info */}
+            <div className="space-y-3">
+              <div className="flex items-center text-gray-300">
+                <Mail className="w-4 h-4 mr-3" />
+                <span>hello@misuai.com</span>
+              </div>
+              <div className="flex items-center text-gray-300">
+                <Phone className="w-4 h-4 mr-3" />
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center text-gray-300">
+                <MapPin className="w-4 h-4 mr-3" />
+                <span>San Francisco, CA</span>
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Links columns */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Product</h4>
-            <ul className="space-y-2">
-              <li><a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a></li>
-              <li><a href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Templates</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Integrations</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">API Docs</a></li>
+            <h4 className="text-white font-semibold mb-4">Product</h4>
+            <ul className="space-y-3">
+              {footerLinks.product.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="sp-footer-link">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Support */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Support</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Live Chat</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Status Page</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Security</a></li>
+            <h4 className="text-white font-semibold mb-4">Solutions</h4>
+            <ul className="space-y-3">
+              {footerLinks.solutions.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="sp-footer-link">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold mb-4">Resources</h4>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="sp-footer-link">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* Contact Info */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-center">
-              <Mail className="w-5 h-5 text-purple-400 mr-3" />
-              <span className="text-gray-300">hello@misuai.com</span>
-            </div>
-            <div className="flex items-center">
-              <Phone className="w-5 h-5 text-purple-400 mr-3" />
-              <span className="text-gray-300">+1 (555) 123-4567</span>
-            </div>
-            <div className="flex items-center">
-              <MapPin className="w-5 h-5 text-purple-400 mr-3" />
-              <span className="text-gray-300">San Francisco, CA</span>
+        {/* Newsletter signup */}
+        <div className="border-t border-gray-700 mt-12 pt-8">
+          <div className="max-w-md">
+            <h4 className="text-white font-semibold mb-4">Stay updated</h4>
+            <p className="text-gray-300 mb-4">
+              Get the latest tips and strategies for cold email success.
+            </p>
+            <div className="flex">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-l-lg focus:outline-none focus:border-blue-500"
+              />
+              <button className="sp-btn-primary rounded-l-none">
+                Subscribe
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {/* Bottom bar */}
+      <div className="border-t border-gray-700">
+        <div className="sp-container py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
               © 2024 MisuAi. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+              <a href="#" className="sp-footer-link">Privacy Policy</a>
+              <a href="#" className="sp-footer-link">Terms of Service</a>
+              <a href="#" className="sp-footer-link">Cookie Policy</a>
+              <a href="#" className="sp-footer-link">GDPR</a>
             </div>
           </div>
         </div>

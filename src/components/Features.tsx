@@ -1,88 +1,126 @@
 
 import React from 'react';
-import { Brain, Target, BarChart, Zap, Users, Shield } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Bot, Target, BarChart3, Zap, Users, Shield, Mail, Sparkles, TrendingUp } from 'lucide-react';
 
 const Features = () => {
   const features = [
     {
-      icon: Brain,
-      title: 'AI-Powered Content Generation',
-      description: 'Generate compelling email content that converts with our advanced AI engine trained on millions of successful campaigns.',
-      gradient: 'from-purple-500 to-pink-500'
+      icon: Bot,
+      title: 'AI Email Writer',
+      description: 'Our AI writes personalized emails that sound human and get replies. No templates needed.',
+      color: 'blue'
     },
     {
       icon: Target,
-      title: 'Smart Audience Targeting',
-      description: 'Reach the right people at the right time with AI-driven segmentation and personalization.',
-      gradient: 'from-blue-500 to-purple-500'
+      title: 'Smart Targeting',
+      description: 'Find and verify email addresses automatically. Target the right prospects every time.',
+      color: 'purple'
     },
     {
-      icon: BarChart,
+      icon: BarChart3,
       title: 'Real-time Analytics',
-      description: 'Track performance with detailed insights and get actionable recommendations to improve your campaigns.',
-      gradient: 'from-green-500 to-blue-500'
+      description: 'Track opens, clicks, and replies in real-time. See which emails perform best.',
+      color: 'green'
     },
     {
       icon: Zap,
-      title: 'Automated Workflows',
-      description: 'Set up complex email sequences that run on autopilot and adapt based on subscriber behavior.',
-      gradient: 'from-yellow-500 to-orange-500'
+      title: 'Auto Follow-ups',
+      description: 'Set up smart follow-up sequences that adapt based on prospect behavior.',
+      color: 'yellow'
     },
     {
       icon: Users,
-      title: 'Advanced Segmentation',
-      description: 'Create highly targeted segments based on behavior, preferences, and engagement patterns.',
-      gradient: 'from-pink-500 to-red-500'
+      title: 'Contact Management',
+      description: 'Organize your prospects and track every interaction in one place.',
+      color: 'red'
     },
     {
       icon: Shield,
-      title: 'Enterprise Security',
-      description: 'Bank-level security with SOC 2 compliance, GDPR ready, and advanced data protection.',
-      gradient: 'from-indigo-500 to-purple-500'
+      title: 'Deliverability Tools',
+      description: 'Advanced spam protection and email warming to ensure inbox delivery.',
+      color: 'indigo'
+    },
+    {
+      icon: Mail,
+      title: 'Email Sequences',
+      description: 'Create automated email campaigns that nurture leads and close deals.',
+      color: 'pink'
+    },
+    {
+      icon: Sparkles,
+      title: 'A/B Testing',
+      description: 'Test different subject lines and content to optimize your campaigns.',
+      color: 'cyan'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Performance Insights',
+      description: 'Get actionable insights to improve your cold email strategy.',
+      color: 'orange'
     }
   ];
 
+  const getColorClasses = (color: string) => {
+    const colorMap = {
+      blue: 'bg-blue-100 text-blue-600',
+      purple: 'bg-purple-100 text-purple-600',
+      green: 'bg-green-100 text-green-600',
+      yellow: 'bg-yellow-100 text-yellow-600',
+      red: 'bg-red-100 text-red-600',
+      indigo: 'bg-indigo-100 text-indigo-600',
+      pink: 'bg-pink-100 text-pink-600',
+      cyan: 'bg-cyan-100 text-cyan-600',
+      orange: 'bg-orange-100 text-orange-600'
+    };
+    return colorMap[color as keyof typeof colorMap] || 'bg-gray-100 text-gray-600';
+  };
+
   return (
-    <section id="features" className="py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section className="sp-section bg-white" id="features">
+      <div className="sp-container">
+        {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Powerful Features That Drive
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"> Results</span>
+          <div className="sp-badge mb-4">
+            Everything you need
+          </div>
+          <h2 className="sp-heading-lg text-gray-900 mb-4">
+            Powerful features for
+            <span className="sp-text-gradient"> modern sales teams</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Everything you need to create, send, and optimize email campaigns that convert better than ever before.
+          <p className="sp-body-lg text-gray-600 max-w-3xl mx-auto">
+            MisuAi combines AI-powered email writing with advanced automation tools
+            to help you send better cold emails and get more replies.
           </p>
         </div>
 
-        {/* Features Grid */}
+        {/* Features grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <Card key={index} className="group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg">
-                <CardContent className="p-8">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <div
+                key={index}
+                className="sp-card-feature sp-animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className={`sp-icon-wrapper ${getColorClasses(feature.color)} mb-6`}>
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="sp-heading-md text-gray-900 mb-4">
+                  {feature.title}
+                </h3>
+                <p className="sp-body text-gray-600">
+                  {feature.description}
+                </p>
+              </div>
             );
           })}
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 text-sm font-medium">
-            And many more features to supercharge your email marketing...
+          <div className="inline-flex items-center px-6 py-3 rounded-full bg-blue-50 text-blue-700 text-sm font-medium">
+            And 50+ more features to supercharge your sales
           </div>
         </div>
       </div>
