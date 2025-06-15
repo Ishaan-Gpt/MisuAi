@@ -53,11 +53,22 @@ const AgentDeployModal: React.FC<AgentDeployModalProps> = ({ open, onOpenChange 
       return;
     }
 
+    // ---- Add deployment info to localStorage ----
+    const newDeployment = {
+      ...formData,
+      createdAt: Date.now()
+    };
+    const prev = localStorage.getItem("deployedAgents");
+    const parsed = prev ? JSON.parse(prev) : [];
+    parsed.push(newDeployment);
+    localStorage.setItem("deployedAgents", JSON.stringify(parsed));
+    window.dispatchEvent(new Event("storage")); // Manually trigger update for other tabs
+
     toast({
       title: "🚀 Agent Deployed Successfully!",
       description: `${formData.agentName} is now active on ${formData.platforms.length} platform(s). You'll see results within 24 hours.`
     });
-    
+
     setStep(1);
     setFormData({ agentName: '', persona: 'personal-brand', platforms: [], goals: 'engagement' });
     onOpenChange(false);
