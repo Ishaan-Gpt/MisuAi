@@ -73,200 +73,395 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    background: #0f0f23;
+    color: #ffffff;
   }
 }
 
-/* SendPilot exact color palette */
+/* Revolutionary AI Design System */
 :root {
-  --sp-primary: #3366ff;
-  --sp-primary-dark: #2952cc;
-  --sp-secondary: #f8fafc;
-  --sp-accent: #06d6a0;
-  --sp-text-primary: #1a202c;
-  --sp-text-secondary: #718096;
-  --sp-border: #e2e8f0;
-  --sp-bg-light: #f7fafc;
-  --sp-success: #48bb78;
-  --sp-warning: #ed8936;
-  --sp-error: #f56565;
+  /* Primary AI Colors */
+  --ai-purple: #7c3aed;
+  --ai-purple-dark: #5b21b6;
+  --ai-pink: #ec4899;
+  --ai-pink-dark: #be185d;
+  --ai-cyan: #06b6d4;
+  --ai-cyan-dark: #0891b2;
+  
+  /* Neural Network Colors */
+  --neural-bg: #0f0f23;
+  --neural-surface: rgba(255, 255, 255, 0.05);
+  --neural-border: rgba(255, 255, 255, 0.1);
+  --neural-glow: rgba(124, 58, 237, 0.3);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-accent: #a855f7;
+  
+  /* Status Colors */
+  --success-ai: #10b981;
+  --warning-ai: #f59e0b;
+  --error-ai: #ef4444;
+  --info-ai: #3b82f6;
 }
 
-/* SendPilot typography */
-.sp-heading-xl {
-  font-size: 3.5rem;
+/* AI Typography System */
+.ai-heading-hero {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--ai-purple), var(--ai-pink), var(--ai-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ai-heading-xl {
+  font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.sp-heading-lg {
-  font-size: 2.5rem;
+.ai-heading-lg {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   line-height: 1.2;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-.sp-heading-md {
-  font-size: 1.875rem;
-  line-height: 1.3;
-  font-weight: 600;
-}
-
-.sp-body-lg {
-  font-size: 1.125rem;
+.ai-body-lg {
+  font-size: 1.25rem;
   line-height: 1.6;
   font-weight: 400;
 }
 
-.sp-body {
-  font-size: 1rem;
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-/* SendPilot buttons */
-.sp-btn-primary {
-  background: var(--sp-primary);
+/* AI Button System */
+.ai-btn-primary {
+  background: linear-gradient(135deg, var(--ai-purple), var(--ai-pink));
   color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.sp-btn-primary:hover {
-  background: var(--sp-primary-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(51, 102, 255, 0.3);
-}
-
-.sp-btn-secondary {
-  background: white;
-  color: var(--sp-primary);
-  border: 1px solid var(--sp-border);
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.sp-btn-secondary:hover {
-  background: var(--sp-secondary);
-  border-color: var(--sp-primary);
-}
-
-/* SendPilot cards */
-.sp-card {
-  background: white;
-  border: 1px solid var(--sp-border);
+  padding: 16px 32px;
   border-radius: 12px;
-  padding: 24px;
-  transition: all 0.3s;
-}
-
-.sp-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.sp-card-feature {
-  background: white;
-  border: 1px solid var(--sp-border);
-  border-radius: 16px;
-  padding: 32px;
-  transition: all 0.3s;
+  font-weight: 600;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.sp-card-feature::before {
+.ai-btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.4);
+}
+
+.ai-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.ai-btn-primary:hover::before {
+  left: 100%;
+}
+
+.ai-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.ai-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--ai-purple);
+  transform: translateY(-1px);
+}
+
+/* AI Card System */
+.ai-card {
+  background: var(--neural-surface);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--neural-border);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ai-purple), var(--ai-pink), var(--ai-cyan));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ai-card:hover::before {
+  opacity: 1;
+}
+
+.ai-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  border-color: var(--ai-purple);
+}
+
+/* AI Agent Feature Cards */
+.ai-feature-card {
+  background: var(--neural-surface);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--neural-border);
+  border-radius: 24px;
+  padding: 40px;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-feature-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--ai-purple)/10, var(--ai-pink)/10);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ai-feature-card:hover::after {
+  opacity: 1;
+}
+
+.ai-feature-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 30px 60px rgba(124, 58, 237, 0.2);
+  border-color: var(--ai-purple);
+}
+
+/* Neural Network Animations */
+@keyframes ai-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes ai-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes ai-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--neural-glow);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--neural-glow), 0 0 60px var(--neural-glow);
+  }
+}
+
+@keyframes ai-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* AI Animation Classes */
+.ai-animate-pulse {
+  animation: ai-pulse 2s ease-in-out infinite;
+}
+
+.ai-animate-float {
+  animation: ai-float 6s ease-in-out infinite;
+}
+
+.ai-animate-glow {
+  animation: ai-glow 3s ease-in-out infinite;
+}
+
+.ai-animate-gradient {
+  background-size: 200% 200%;
+  animation: ai-gradient-shift 4s ease infinite;
+}
+
+/* AI Gradient System */
+.ai-gradient-primary {
+  background: linear-gradient(135deg, var(--ai-purple), var(--ai-pink));
+}
+
+.ai-gradient-secondary {
+  background: linear-gradient(135deg, var(--ai-cyan), var(--ai-purple));
+}
+
+.ai-gradient-neural {
+  background: linear-gradient(135deg, #1e1b4b, #312e81, #1e1b4b);
+}
+
+.ai-gradient-text {
+  background: linear-gradient(135deg, var(--ai-purple), var(--ai-pink), var(--ai-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* AI Container System */
+.ai-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.ai-section {
+  padding: 120px 0;
+  position: relative;
+}
+
+/* AI Badge System */
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(124, 58, 237, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 30px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ai-purple);
+}
+
+/* AI Icon Wrapper */
+.ai-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ai-purple), var(--ai-pink));
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-icon-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.ai-icon-wrapper:hover::before {
+  transform: translateX(100%);
+}
+
+/* Neural Grid Background */
+.neural-grid {
+  background-image: 
+    linear-gradient(rgba(124, 58, 237, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* AI Pricing Cards */
+.ai-pricing-card {
+  background: var(--neural-surface);
+  backdrop-filter: blur(20px);
+  border: 2px solid var(--neural-border);
+  border-radius: 24px;
+  padding: 40px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-pricing-card.popular {
+  border-color: var(--ai-purple);
+  transform: scale(1.05);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.1));
+}
+
+.ai-pricing-card.popular::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--sp-primary), var(--sp-accent));
-  opacity: 0;
-  transition: opacity 0.3s;
+  background: linear-gradient(90deg, var(--ai-purple), var(--ai-pink), var(--ai-cyan));
 }
 
-.sp-card-feature:hover::before {
-  opacity: 1;
+.ai-pricing-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(124, 58, 237, 0.2);
 }
 
-.sp-card-feature:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border-color: var(--sp-primary);
+.ai-pricing-card.popular:hover {
+  transform: scale(1.08) translateY(-8px);
 }
 
-/* SendPilot pricing cards */
-.sp-pricing-card {
-  background: white;
-  border: 2px solid var(--sp-border);
-  border-radius: 16px;
-  padding: 32px;
-  transition: all 0.3s;
-  position: relative;
-}
-
-.sp-pricing-card.popular {
-  border-color: var(--sp-primary);
-  position: relative;
-  transform: scale(1.05);
-}
-
-.sp-pricing-card.popular::before {
-  content: 'Most Popular';
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--sp-primary);
-  color: white;
-  padding: 6px 16px;
+/* AI Testimonial Cards */
+.ai-testimonial-card {
+  background: var(--neural-surface);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--neural-border);
   border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.sp-pricing-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.sp-pricing-card.popular:hover {
-  transform: scale(1.05) translateY(-4px);
-}
-
-/* SendPilot testimonial cards */
-.sp-testimonial-card {
-  background: white;
-  border: 1px solid var(--sp-border);
-  border-radius: 12px;
-  padding: 24px;
-  transition: all 0.3s;
+  padding: 32px;
+  transition: all 0.4s ease;
   position: relative;
+  overflow: hidden;
 }
 
-.sp-testimonial-card::before {
+.ai-testimonial-card::before {
   content: '"';
   position: absolute;
-  top: -10px;
-  left: 20px;
-  font-size: 4rem;
-  color: var(--sp-primary);
+  top: -20px;
+  left: 24px;
+  font-size: 5rem;
+  color: var(--ai-purple);
   font-family: serif;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
-.sp-testimonial-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+.ai-testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: var(--ai-purple);
 }
 
-/* SendPilot animations */
+/* Advanced Animations */
 @keyframes sp-fade-in-up {
   from {
     opacity: 0;
@@ -310,138 +505,77 @@
   }
 }
 
-@keyframes sp-pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
 .sp-animate-fade-in-up {
-  animation: sp-fade-in-up 0.6s ease-out forwards;
+  animation: sp-fade-in-up 0.8s ease-out forwards;
 }
 
 .sp-animate-fade-in {
-  animation: sp-fade-in 0.4s ease-out forwards;
+  animation: sp-fade-in 0.6s ease-out forwards;
 }
 
 .sp-animate-scale-in {
-  animation: sp-scale-in 0.4s ease-out forwards;
+  animation: sp-scale-in 0.6s ease-out forwards;
 }
 
 .sp-animate-bounce {
-  animation: sp-bounce 2s infinite;
+  animation: sp-bounce 3s infinite;
 }
 
-.sp-animate-pulse {
-  animation: sp-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* Legacy class mappings for compatibility */
+.sp-container { @apply ai-container; }
+.sp-section { @apply ai-section; }
+.sp-btn-primary { @apply ai-btn-primary; }
+.sp-btn-secondary { @apply ai-btn-secondary; }
+.sp-card { @apply ai-card; }
+.sp-card-feature { @apply ai-feature-card; }
+.sp-pricing-card { @apply ai-pricing-card; }
+.sp-testimonial-card { @apply ai-testimonial-card; }
+.sp-badge { @apply ai-badge; }
+.sp-icon-wrapper { @apply ai-icon-wrapper; }
+.sp-text-gradient { @apply ai-gradient-text; }
+.sp-heading-xl { @apply ai-heading-xl; }
+.sp-heading-lg { @apply ai-heading-lg; }
+.sp-body-lg { @apply ai-body-lg; }
+
+/* Utility Classes */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* SendPilot gradients */
-.sp-gradient-primary {
-  background: linear-gradient(135deg, var(--sp-primary) 0%, #4facfe 100%);
+.neural-glow {
+  box-shadow: 0 0 30px var(--neural-glow);
 }
 
-.sp-gradient-secondary {
-  background: linear-gradient(135deg, var(--sp-accent) 0%, #00f2fe 100%);
-}
-
-.sp-gradient-text {
-  background: linear-gradient(135deg, var(--sp-primary) 0%, var(--sp-accent) 100%);
+.ai-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--ai-purple) 0%,
+    var(--ai-pink) 50%,
+    var(--ai-cyan) 100%
+  );
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: ai-gradient-shift 3s ease-in-out infinite;
 }
 
-/* SendPilot hero background */
-.sp-hero-bg {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  position: relative;
-  overflow: hidden;
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.sp-hero-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+::-webkit-scrollbar-track {
+  background: var(--neural-bg);
 }
 
-/* SendPilot utilities */
-.sp-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--ai-purple), var(--ai-pink));
+  border-radius: 4px;
 }
 
-.sp-section {
-  padding: 80px 0;
-}
-
-.sp-text-gradient {
-  background: linear-gradient(135deg, var(--sp-primary), var(--sp-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.sp-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 12px;
-  background: rgba(51, 102, 255, 0.1);
-  color: var(--sp-primary);
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.sp-icon-wrapper {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(51, 102, 255, 0.1);
-  color: var(--sp-primary);
-}
-
-/* SendPilot navigation */
-.sp-nav {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--sp-border);
-}
-
-.sp-nav-link {
-  color: var(--sp-text-secondary);
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.sp-nav-link:hover {
-  color: var(--sp-text-primary);
-}
-
-/* SendPilot footer */
-.sp-footer {
-  background: var(--sp-text-primary);
-  color: white;
-}
-
-.sp-footer-link {
-  color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s;
-}
-
-.sp-footer-link:hover {
-  color: white;
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--ai-purple-dark), var(--ai-pink-dark));
 }
