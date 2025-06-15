@@ -1,15 +1,17 @@
 
 import React from "react";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
 
 const Profile = () => (
-  <div className="flex flex-col items-center justify-center min-h-[60vh]">
-    <div className="w-24 h-24 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center mb-4 shadow-lg text-5xl text-white font-semibold">
-      {/* Placeholder avatar */}
-      U
+  <DashboardLayout title="Your Profile" subtitle="Update your info, bio, and avatar.">
+    <div className="flex flex-col items-center justify-center w-full">
+      <div className="w-28 h-28 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center mb-4 shadow-lg text-5xl text-white font-semibold">
+        U
+      </div>
+      <div className="mt-4 text-lg text-gray-300 font-medium">Username Placeholder</div>
+      <div className="text-gray-400 mb-6">A short user bio goes here. (Profile edit coming soon!)</div>
     </div>
-    <h1 className="text-3xl font-bold mb-2">User Profile</h1>
-    <p className="text-gray-400 mb-6">This is your profile page. (Coming soon: Customize your info, bio, and avatar.)</p>
-  </div>
+  </DashboardLayout>
 );
 
 export default Profile;

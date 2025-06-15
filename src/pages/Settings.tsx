@@ -1,12 +1,18 @@
 
 import React from "react";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
 
 const Settings = () => (
-  <div className="max-w-2xl mx-auto py-20">
-    <h1 className="text-3xl font-bold mb-4">Settings</h1>
-    <p className="text-gray-400 mb-6">Adjust your AI Assistant settings, account, and integrations. (Settings features coming soon.)</p>
-    {/* Placeholders for settings, you can add toggles/forms here later */}
-  </div>
+  <DashboardLayout
+    title="Settings"
+    subtitle="Adjust your AI Assistant settings, account, and integrations."
+  >
+    <div className="bg-white/5 rounded-2xl p-8 border border-white/10 text-gray-300 h-64 flex flex-col gap-2 items-center justify-center">
+      {/* Placeholder for settings forms */}
+      <span className="text-lg font-semibold">Settings Coming Soon</span>
+      <span className="text-gray-400">Toggle options and integrations will appear here.</span>
+    </div>
+  </DashboardLayout>
 );
 
 export default Settings;

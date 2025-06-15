@@ -1,12 +1,15 @@
 
 import React from "react";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import DeployedAgents from "@/components/DeployedAgents";
 
 const DeployedAgentsPage = () => (
-  <div className="max-w-3xl mx-auto py-20 px-4">
-    <h1 className="text-3xl font-bold mb-6 text-white">Deployed Agents</h1>
+  <DashboardLayout
+    title="Deployed Agents"
+    subtitle="Your recently deployed agents and their statuses."
+  >
     <DeployedAgents source="page" />
-  </div>
+  </DashboardLayout>
 );
 
 export default DeployedAgentsPage;

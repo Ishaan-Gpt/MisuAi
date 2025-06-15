@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,9 @@ import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import DeployedAgentsPage from "./pages/DeployedAgentsPage";
+import Dashboard from "./pages/Dashboard";
+import Analytics from "./pages/Analytics";
+import History from "./pages/History";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +21,10 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/history" element={<History />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/deployed-agents" element={<DeployedAgentsPage />} />
