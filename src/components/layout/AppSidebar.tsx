@@ -13,13 +13,14 @@ import {
 import {
   LayoutDashboard,
   BarChart2,
-  History,
+  History as HistoryIcon,
   Rocket,
   UserCircle2,
   Settings as SettingsIcon,
   LogOut,
 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import clsx from "clsx";
 
 const menu = [
   {
@@ -35,7 +36,7 @@ const menu = [
   {
     title: "History",
     url: "/history",
-    icon: History,
+    icon: HistoryIcon,
   },
   {
     title: "Deployed Agents",
@@ -68,16 +69,28 @@ export function AppSidebar() {
           <SidebarGroupLabel className="text-purple-300 text-sm pt-2 pb-1">Main</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menu.map((item) => (
-                <SidebarMenuItem key={item.title} active={location.pathname === item.url}>
-                  <SidebarMenuButton asChild>
-                    <Link to={item.url} className="flex items-center gap-2 px-3 py-2 w-full rounded hover:bg-purple-400/10 transition-colors">
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {menu.map((item) => {
+                const isActive = location.pathname === item.url;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <Link
+                        to={item.url}
+                        className={clsx(
+                          "flex items-center gap-2 px-3 py-2 w-full rounded transition-colors",
+                          isActive
+                            ? "bg-purple-600/30 text-purple-200 font-semibold shadow"
+                            : "hover:bg-purple-400/10 text-gray-300"
+                        )}
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -85,16 +98,28 @@ export function AppSidebar() {
           <SidebarGroupLabel className="text-purple-300 text-sm pt-4 pb-1">Account</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {user.map((item) => (
-                <SidebarMenuItem key={item.title} active={location.pathname === item.url}>
-                  <SidebarMenuButton asChild>
-                    <Link to={item.url} className="flex items-center gap-2 px-3 py-2 w-full rounded hover:bg-purple-400/10 transition-colors">
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {user.map((item) => {
+                const isActive = location.pathname === item.url;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <Link
+                        to={item.url}
+                        className={clsx(
+                          "flex items-center gap-2 px-3 py-2 w-full rounded transition-colors",
+                          isActive
+                            ? "bg-purple-600/30 text-purple-200 font-semibold shadow"
+                            : "hover:bg-purple-400/10 text-gray-300"
+                        )}
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <button
